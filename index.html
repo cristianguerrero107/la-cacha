@@ -1,33 +1,109 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<title>Epro_Code</title>
-	<link rel="icon" type="image/jpg" href="img/LOGO.png">
-	<meta charset="utf-8">
-</head>
-<body class="fondopagina">
-<header class="encabezado">
-	<div class="header-brand">
-		<a class="logo-link" href="#">
-			<img class="imagen" src="img/LOGO.png" alt="Logo Shein" width="100">
-		</a>
-		<div class="titulo-principal">
-			<h1><span class="texto-lan">SHEIN</span> <span class="texto-mas">FASHION</span></h1>
-		</div>
-	</div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shein Fashion</title>
+  
+  <!-- Aquí metemos el diseño directamente para que funcione sí o sí -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
 
-	<nav class="menu-de-opciones" aria-label="Menú principal">
-		<ul class="menu-lista">
-			<li><a href="#">INICIO</a></li>
-			<li><a href="#">COLECCIONES</a></li>
-			<li><a href="#">OFERTAS</a></li>
-			<li><a href="#">MI CUENTA</a></li>
-		</ul>
-	</nav>
-</header>
+    /* ESTILOS DEL HEADER */
+    .header-fashion {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5%;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* CONTENEDOR DEL LOGO Y TEXTO */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* AQUÍ CONTROLAMOS EL TAMAÑO DE TU LOGO */
+    .logo-img {
+      height: 55px; /* Si lo quieres más chico, bájalo a 40px. Si lo quieres más grande, súbelo a 70px */
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .titulo-marca {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #000000;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    /* MENÚ DE NAVEGACIÓN */
+    .navegacion ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navegacion a {
+      text-decoration: none;
+      color: #222222;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    /* Efecto al pasar el mouse */
+    .navegacion a:hover {
+      color: #999999;
+    }
+
+    /* MODO CELULAR (Para que no se amontone nada) */
+    @media (max-width: 768px) {
+      .header-fashion {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px;
+      }
+      
+      .navegacion ul {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-fashion">
+    <div class="logo-container">
+      <!-- Tu imagen con la ruta que ya te funcionó -->
+      <img src="img/LOGO.png" alt="Logo Shein" class="logo-img">
+      <a href="#" class="titulo-marca">SHEIN FASHION</a>
+    </div>
+
+    <nav class="navegacion">
+      <ul>
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#colecciones">COLECCIONES</a></li>
+        <li><a href="#ofertas">OFERTAS</a></li>
+        <li><a href="#cuenta">MI CUENTA</a></li>
+      </ul>
+    </nav>
+  </header>
 
 </body>
 </html>
-
-

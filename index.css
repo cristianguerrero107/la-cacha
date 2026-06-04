@@ -1,0 +1,59 @@
+/* =========================================
+   ESTILOS HEADER SHEIN FASHION
+   ========================================= */
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Fuente limpia y moderna */
+}
+
+.header-fashion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee; /* Línea sutil debajo del menú */
+}
+
+/* Estilos de la zona del Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre el logo y el texto */
+}
+
+.logo-img {
+  height: 30px; /* Ajusta este valor según el tamaño de tu imagen */
+  width: 30px;
+}
+
+.titulo-marca {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none;
+  letter-spacing: 2px; /* Separa un poco las letras para más elegancia */
+}
+
+/* Estilos de los Enlaces */
+.navegacion ul {
+  list-style: none; /* Quita los puntos de la lista */
+  display: flex;
+  gap: 25px; /* Espacio entre cada enlace */
+  margin: 0;
+  padding: 0;
+}
+
+.navegacion a {
+  text-decoration: none; /* Quita el subrayado azul feo */
+  color: #333333;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+/* Color al pasar el mouse por los enlaces */
+.navegacion a:hover {
+  color: #888888;
+  text-decoration: underline; 
+}
