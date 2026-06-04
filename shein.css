@@ -87,9 +87,9 @@ body {
     transform: scale(1.05);
 }
 
-.logo i {
+.logo-icon {
     font-size: 2rem;
-    color: #ff1744;
+    display: inline-block;
 }
 
 .logo span {
@@ -161,8 +161,9 @@ body {
     color: #ff1744;
 }
 
-.action-btn i {
+.action-btn .icon {
     font-size: 1.5rem;
+    display: inline-block;
 }
 
 .cart-count {
@@ -288,7 +289,7 @@ body {
         gap: 15px;
     }
 
-    .action-btn span {
+    .action-btn span:last-child {
         display: none;
     }
 }
