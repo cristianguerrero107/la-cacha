@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shein Fashion</title>
   
-  <!-- Aquí metemos el diseño directamente para que funcione sí o sí -->
+  <!-- Diseño inline (mantengo la estructura original y añado estilos para el título de sección) -->
   <style>
     body {
       margin: 0;
@@ -32,15 +32,13 @@
     }
 
     /* AQUÍ CONTROLAMOS EL TAMAÑO DE TU LOGO */
-    /* Si usas la versión SVG inline, usa .logo-svg. Mantengo .logo-img por compatibilidad con imágenes externas. */
     .logo-img, .logo-svg {
-      height: 55px; /* Si lo quieres más chico, bájalo a 40px. Si lo quieres más grande, súbelo a 70px */
+      height: 55px;
       width: auto;
       display: block;
       object-fit: contain;
     }
 
-    /* Ajustes para el SVG inline (mejor control) */
     .logo-svg svg {
       height: 100%;
       width: auto;
@@ -55,6 +53,15 @@
       letter-spacing: 2px;
     }
 
+    /* TÍTULO DE SECCIÓN (cambia dinámicamente) */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #333333;
+      margin-left: 6px;
+      text-transform: none; /* controlamos capitalización desde JS */
+    }
+
     /* MENÚ DE NAVEGACIÓN */
     .navegacion ul {
       list-style: none;
@@ -64,35 +71,40 @@
       padding: 0;
     }
 
-    .navegacion a {
+    .navegacion a, .menu-link {
       text-decoration: none;
       color: #222222;
       font-weight: 600;
       font-size: 0.9rem;
       letter-spacing: 1px;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, background-color 0.15s ease;
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: inline-block;
     }
 
-    /* Efecto al pasar el mouse */
-    .navegacion a:hover {
+    .navegacion a:hover, .menu-link:hover {
       color: #999999;
+      background-color: rgba(0,0,0,0.03);
     }
 
-    /* MODO CELULAR (Para que no se amontone nada) */
+    .menu-link.active {
+      color: #ffffff;
+      background-color: #222222;
+    }
+
+    /* MODO CELULAR */
     @media (max-width: 768px) {
       .header-fashion {
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         text-align: center;
         padding: 15px;
       }
-      
       .navegacion ul {
         flex-direction: column;
         gap: 12px;
       }
-
-      /* Reducir el logo en pantallas pequeñas */
       .logo-img, .logo-svg {
         height: 45px;
       }
@@ -103,9 +115,8 @@
 
   <header class="header-fashion">
     <div class="logo-container">
-      <!-- Reemplazo la imagen faltante por un SVG inline (si prefieres una imagen externa, súbela a img/LOGO.png) -->
+      <!-- Mantengo el SVG inline existente -->
       <div class="logo-svg" aria-hidden="true">
-        <!-- SVG simple: fondo negro con texto SHEIN en blanco, centrado -->
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo SHEIN" focusable="false">
           <title>SHEIN</title>
           <rect width="100" height="100" fill="#000" rx="8"/>
@@ -113,18 +124,56 @@
         </svg>
       </div>
 
-      <a href="#" class="titulo-marca">SHEIN FASHION</a>
+      <!-- Marca (link) -->
+      <a href="#" class="titulo-marca" id="brand-link">SHEIN FASHION</a>
+
+      <!-- Aquí se muestra el nombre de la sección seleccionado (por defecto muestra la marca) -->
+      <h1 id="site-title" class="section-title">Inicio</h1>
     </div>
 
-    <nav class="navegacion">
+    <nav class="navegacion" aria-label="Menú principal">
       <ul>
-        <li><a href="#inicio">INICIO</a></li>
-        <li><a href="#colecciones">COLECCIONES</a></li>
-        <li><a href="#ofertas">OFERTAS</a></li>
-        <li><a href="#cuenta">MI CUENTA</a></li>
+        <li><a class="menu-link active" href="#inicio">INICIO</a></li>
+        <li><a class="menu-link" href="#colecciones">COLECCIONES</a></li>
+        <li><a class="menu-link" href="#ofertas">OFERTAS</a></li>
+        <li><a class="menu-link" href="#cuenta">MI CUENTA</a></li>
       </ul>
     </nav>
   </header>
+
+  <script>
+    // Script: al hacer clic en una opción del menú, actualiza sólo el texto del encabezado (site-title)
+    (function () {
+      const titleEl = document.getElementById('site-title');
+      const links = document.querySelectorAll('.menu-link');
+      const brandLink = document.getElementById('brand-link');
+
+      function setActive(link) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+
+      links.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          // Tomamos el texto visible del enlace y lo normalizamos a: primera letra mayúscula, resto minúsculas
+          let newTitle = this.textContent.trim().toLowerCase();
+          newTitle = newTitle.charAt(0).toUpperCase() + newTitle.slice(1);
+
+          titleEl.textContent = newTitle;
+          setActive(this);
+        });
+      });
+
+      // Si se hace clic en el nombre de la marca, volver al título por defecto (puede ser "Inicio")
+      brandLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        titleEl.textContent = 'Inicio';
+        // marcar el primer enlace como activo
+        if (links.length) setActive(links[0]);
+      });
+    })();
+  </script>
 
 </body>
 </html>
